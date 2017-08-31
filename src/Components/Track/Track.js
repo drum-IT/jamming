@@ -2,11 +2,11 @@ import React from 'react';
 import './Track.css';
 
 class Track extends React.Component {
-  renderAction(add) {
-    if (add) {
-      return <a className="Track-action">-</a>;
+  renderAction(isRemoval) {
+    if (isRemoval) {
+      return '-';
     } else {
-      return <a className="Track-action">+</a>;
+      return '+';
     }
   }
   render() {
@@ -16,7 +16,7 @@ class Track extends React.Component {
           <h3>{this.props.track.name}</h3>
           <p>{this.props.track.artist} | {this.props.track.album}</p>
         </div>
-        <a className="Track-action">{/*<!-- + or - will go here -->*/}</a>
+        <a className="Track-action">{this.renderAction(false)}</a>
       </div>
     );
   }
