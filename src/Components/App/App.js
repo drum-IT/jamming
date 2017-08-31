@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import SearchBar from '../SearchBar/SearchBar';
+import SearchResults from '../SearchResults/SearchResults';
+import Playlist from '../Playlist/Playlist';
 
-class App extends Component {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchResults: [{name: 'test name',artist: 'test artist',album: 'test album', id: 'test id'}, {name: 'test name',artist: 'test artist',album: 'test album', id: 'test id 2'}]
+    }
+  }
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div>
+        <h1>Ja<span>mmm</span>ing</h1>
+        <div className="App">
+          <SearchBar />
+          <div className="App-playlist">
+            <SearchResults searchResults={this.state.searchResults} />
+            <Playlist />
+          </div>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
